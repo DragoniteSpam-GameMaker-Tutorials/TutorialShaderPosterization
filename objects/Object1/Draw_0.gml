@@ -4,6 +4,8 @@ if (keyboard_check_pressed(vk_right)) index = ++index % array_length(images);
 if (keyboard_check_pressed(vk_left)) index = (--index + array_length(images)) % array_length(images);
 
 shader_set(shd_posterization);
+var uniform_posterization = shader_get_uniform(shd_posterization, "posterization_level");
+shader_set_uniform_f(uniform_posterization, level);
 draw_sprite(images[index], 0, 0, 0);
 shader_reset();
 
